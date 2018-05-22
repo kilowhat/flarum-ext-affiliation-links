@@ -1,0 +1,53 @@
+{
+    "name": "flagrow/affiliation-links",
+    "description": "Transform posted links into affiliation links with ease",
+    "keywords": [
+        "extension",
+        "flarum",
+        "flagrow",
+        "affiliation",
+        "links"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Clark Winkelmann",
+            "email": "clark.winkelmann@gmail.com",
+            "homepage": "https://clarkwinkelmann.com/"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/flagrow/affiliation-links/issues",
+        "source": "https://github.com/flagrow/affiliation-links"
+    },
+    "require": {
+        "flarum/core": "^0.1.0-beta.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Flagrow Affiliation Links",
+            "icon": {
+                "name": "exchange",
+                "backgroundColor": "#f4f4f4",
+                "color": "#5f4bb6"
+            }
+        },
+        "flagrow": {
+            "discuss": "#"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Flagrow\\AffiliationLinks\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Flagrow\\AffiliationLinks\\Tests\\": "tests/"
+        }
+    }
+}
