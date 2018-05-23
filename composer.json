@@ -37,7 +37,7 @@
             }
         },
         "flagrow": {
-            "discuss": "#"
+            "discuss": "https://discuss.flarum.org/d/12391-flagrow-affiliation-links-multi-purpose-affiliation-links-generator"
         }
     },
     "autoload": {
