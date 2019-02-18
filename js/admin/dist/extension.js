@@ -199,7 +199,7 @@ System.register('flagrow/affiliation-links/components/RuleEdit', ['flarum/app', 
                         var _this4 = this;
 
                         if (!confirm(app.translator.trans('flagrow-affiliation-links.admin.messages.delete-rule-confirmation', {
-                            name: this.rule.name()
+                            match_pattern: this.rule.match_pattern()
                         }).join(''))) {
                             return;
                         }

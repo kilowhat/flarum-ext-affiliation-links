@@ -170,7 +170,7 @@ export default class RuleEdit extends Component {
 
     deletePolicy() {
         if (!confirm(app.translator.trans('flagrow-affiliation-links.admin.messages.delete-rule-confirmation', {
-                name: this.rule.name(),
+                match_pattern: this.rule.match_pattern(),
             }).join(''))) {
             return;
         }
