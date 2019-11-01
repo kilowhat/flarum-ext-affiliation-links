@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Tests;
+namespace Kilowhat\AffiliationLinks\Tests;
 
-use Flagrow\AffiliationLinks\UrlReplacer;
+use Kilowhat\AffiliationLinks\UrlReplacer;
 use PHPUnit\Framework\TestCase;
 
 class UrlReplacerTest extends TestCase

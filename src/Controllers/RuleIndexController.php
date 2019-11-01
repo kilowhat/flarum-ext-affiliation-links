@@ -1,15 +1,15 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Controllers;
+namespace Kilowhat\AffiliationLinks\Controllers;
 
-use Flagrow\AffiliationLinks\Repositories\RuleRepository;
-use Flagrow\AffiliationLinks\Serializers\RuleSerializer;
-use Flarum\Api\Controller\AbstractCollectionController;
-use Flarum\Core\Access\AssertPermissionTrait;
+use Flarum\Api\Controller\AbstractListController;
+use Flarum\User\AssertPermissionTrait;
+use Kilowhat\AffiliationLinks\Repositories\RuleRepository;
+use Kilowhat\AffiliationLinks\Serializers\RuleSerializer;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
-class RuleIndexController extends AbstractCollectionController
+class RuleIndexController extends AbstractListController
 {
     use AssertPermissionTrait;
 

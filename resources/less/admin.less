@@ -1,37 +1,44 @@
-.Flagrow-AffiliationLinks-Rules-Container {
+.Kilowhat-AffiliationLinks-Rules-Container {
     border-radius: @border-radius;
     padding: 20px;
     margin-bottom: 20px;
     background: @body-bg;
 }
 
-.Flagrow-AffiliationLinks-Rule-Box {
-    position: relative;
+.Kilowhat-AffiliationLinks-Rule-Box {
     padding: 10px 0;
-    padding-left: 50px;
     margin: 10px 0;
     border-left: 5px solid #eee;
 }
 
-.Flagrow-AffiliationLinks-Rule-Header {
-    text-align: left;
+.Kilowhat-AffiliationLinks-Rule-Top {
     display: flex;
 }
 
-.Flagrow-AffiliationLinks-Rule-Header-Title {
+.Kilowhat-AffiliationLinks-Rule-Header {
+    flex-grow: 1;
+    text-align: left;
+    display: flex;
+
+    &:first-child {
+        margin-left: 50px;
+    }
+}
+
+.Kilowhat-AffiliationLinks-Rule-Header-Title {
     flex-grow: 1;
 }
 
-.Flagrow-AffiliationLinks-Rule-Box--handle {
-    position: absolute;
-    top: 15px;
-    left: 10px;
+.Kilowhat-AffiliationLinks-Rule-Box--handle {
+    display: block;
+    padding: 10px 15px;
     cursor: move;
     color: @muted-color;
     font-size: 20px;
 }
 
-.Flagrow-AffiliationLinks-Rule-Body {
+.Kilowhat-AffiliationLinks-Rule-Body {
     background-color: @control-bg;
     padding: 10px;
+    margin-left: 50px;
 }

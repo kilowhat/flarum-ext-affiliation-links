@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Validators;
+namespace Kilowhat\AffiliationLinks\Validators;
 
-use Flarum\Core\Validator\AbstractValidator;
+use Flarum\Foundation\AbstractValidator;
 
 class RuleValidator extends AbstractValidator
 {

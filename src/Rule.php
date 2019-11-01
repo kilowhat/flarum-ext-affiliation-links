@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\AffiliationLinks;
+namespace Kilowhat\AffiliationLinks;
 
 use Carbon\Carbon;
 use Flarum\Database\AbstractModel;
@@ -18,7 +18,7 @@ use Flarum\Database\AbstractModel;
  */
 class Rule extends AbstractModel
 {
-    protected $table = 'flagrow_affiliation_links_rules';
+    protected $table = 'kilowhat_affiliation_links_rules';
 
     public $timestamps = true;
 

@@ -5,7 +5,11 @@ use Illuminate\Database\Schema\Builder;
 
 return [
     'up' => function (Builder $schema) {
-        $schema->create('flagrow_affiliation_links_rules', function (Blueprint $table) {
+        if ($schema->hasTable('kilowhat_affiliation_links_rules')) {
+            return;
+        }
+
+        $schema->create('kilowhat_affiliation_links_rules', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('sort')->nullable()->index();
             $table->string('match_component');
@@ -17,6 +21,6 @@ return [
         });
     },
     'down' => function (Builder $schema) {
-        $schema->drop('flagrow_affiliation_links_rules');
+        $schema->drop('kilowhat_affiliation_links_rules');
     },
 ];

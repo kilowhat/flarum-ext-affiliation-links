@@ -1,11 +1,11 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Repositories;
+namespace Kilowhat\AffiliationLinks\Repositories;
 
-use Flagrow\AffiliationLinks\Rule;
-use Flagrow\AffiliationLinks\Validators\RuleValidator;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Database\Eloquent\Collection;
+use Kilowhat\AffiliationLinks\Rule;
+use Kilowhat\AffiliationLinks\Validators\RuleValidator;
 
 class RuleRepository
 {
@@ -15,7 +15,7 @@ class RuleRepository
 
     protected $rememberState;
 
-    const CACHE_KEY = 'flagrow-affiliation-links-rules';
+    const CACHE_KEY = 'kilowhat-affiliation-links-rules';
 
     public function __construct(Rule $rule, RuleValidator $validator, Repository $cache)
     {

@@ -1,10 +1,11 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Controllers;
+namespace Kilowhat\AffiliationLinks\Controllers;
 
-use Flagrow\AffiliationLinks\Repositories\RuleRepository;
 use Flarum\Api\Controller\AbstractDeleteController;
-use Flarum\Core\Access\AssertPermissionTrait;
+use Flarum\User\AssertPermissionTrait;
+use Illuminate\Support\Arr;
+use Kilowhat\AffiliationLinks\Repositories\RuleRepository;
 use Psr\Http\Message\ServerRequestInterface;
 
 class RuleDeleteController extends AbstractDeleteController
@@ -22,7 +23,7 @@ class RuleDeleteController extends AbstractDeleteController
     {
         $this->assertAdmin($request->getAttribute('actor'));
 
-        $id = array_get($request->getQueryParams(), 'id');
+        $id = Arr::get($request->getQueryParams(), 'id');
 
         $field = $this->rules->findOrFail($id);
 

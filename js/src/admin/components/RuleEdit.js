@@ -1,8 +1,10 @@
 import app from 'flarum/app';
-import icon from 'flarum/helpers/icon';
 import Component from 'flarum/Component';
 import Button from 'flarum/components/Button';
 import Select from 'flarum/components/Select';
+import icon from 'flarum/helpers/icon';
+
+/* global m */
 
 export default class RuleEdit extends Component {
     init() {
@@ -17,7 +19,7 @@ export default class RuleEdit extends Component {
     }
 
     initNewField() {
-        this.rule = app.store.createRecord('flagrow-affiliation-links-rules', {
+        this.rule = app.store.createRecord('kilowhat-affiliation-links-rules', {
             attributes: {
                 match_component: 'host',
                 match_type: 'exact',
@@ -37,24 +39,26 @@ export default class RuleEdit extends Component {
             ];
         }
 
-        return app.translator.trans('flagrow-affiliation-links.admin.buttons.new-rule');
+        return app.translator.trans('kilowhat-affiliation-links.admin.buttons.new-rule');
     }
 
     view() {
-        return m('.Flagrow-AffiliationLinks-Rule-Box', [
-            (this.rule.exists ? m('span.fa.fa-arrows.Flagrow-AffiliationLinks-Rule-Box--handle.js-rule-handle') : null),
-            m('.Button.Button--block.Flagrow-AffiliationLinks-Rule-Header', {
-                onclick: () => {
-                    this.toggleFields = !this.toggleFields;
-                },
-            }, [
-                m('.Flagrow-AffiliationLinks-Rule-Header-Title', this.boxTitle()),
-                m('div', [
-                    (this.rule.exists ? [
-                        app.translator.trans('flagrow-affiliation-links.admin.buttons.edit-rule'),
-                        ' ',
-                    ] : null),
-                    icon(this.toggleFields ? 'chevron-up' : 'chevron-down'),
+        return m('.Kilowhat-AffiliationLinks-Rule-Box', [
+            m('.Kilowhat-AffiliationLinks-Rule-Top', [
+                (this.rule.exists ? m('span.fas.fa-arrows-alt.Kilowhat-AffiliationLinks-Rule-Box--handle.js-rule-handle') : null),
+                m('.Button.Button--block.Kilowhat-AffiliationLinks-Rule-Header', {
+                    onclick: () => {
+                        this.toggleFields = !this.toggleFields;
+                    },
+                }, [
+                    m('.Kilowhat-AffiliationLinks-Rule-Header-Title', this.boxTitle()),
+                    m('div', [
+                        (this.rule.exists ? [
+                            app.translator.trans('kilowhat-affiliation-links.admin.buttons.edit-rule'),
+                            ' ',
+                        ] : null),
+                        icon(this.toggleFields ? 'fas fa-chevron-up' : 'fas fa-chevron-down'),
+                    ]),
                 ]),
             ]),
             (this.toggleFields ? this.viewFields() : null),
@@ -62,53 +66,53 @@ export default class RuleEdit extends Component {
     }
 
     viewFields() {
-        return m('form.Flagrow-AffiliationLinks-Rule-Body', [
+        return m('form.Kilowhat-AffiliationLinks-Rule-Body', [
             m('.Form-group', [
-                m('label', app.translator.trans('flagrow-affiliation-links.admin.rules.match-component')),
+                m('label', app.translator.trans('kilowhat-affiliation-links.admin.rules.match-component')),
                 Select.component({
                     value: this.rule.match_component(),
                     onchange: this.updateAttribute.bind(this, 'match_component'),
                     options: {
-                        uri: app.translator.trans('flagrow-affiliation-links.admin.component-options.uri'),
-                        host: app.translator.trans('flagrow-affiliation-links.admin.component-options.host'),
-                        path: app.translator.trans('flagrow-affiliation-links.admin.component-options.path'),
+                        uri: app.translator.trans('kilowhat-affiliation-links.admin.component-options.uri'),
+                        host: app.translator.trans('kilowhat-affiliation-links.admin.component-options.host'),
+                        path: app.translator.trans('kilowhat-affiliation-links.admin.component-options.path'),
                     },
                 }),
-                m('.helpText', app.translator.trans('flagrow-affiliation-links.admin.rules.match-component-help')),
+                m('.helpText', app.translator.trans('kilowhat-affiliation-links.admin.rules.match-component-help')),
             ]),
             m('.Form-group', [
-                m('label', app.translator.trans('flagrow-affiliation-links.admin.rules.match-type')),
+                m('label', app.translator.trans('kilowhat-affiliation-links.admin.rules.match-type')),
                 Select.component({
                     value: this.rule.match_type(),
                     onchange: this.updateAttribute.bind(this, 'match_type'),
                     options: {
-                        exact: app.translator.trans('flagrow-affiliation-links.admin.type-options.exact'),
-                        simple: app.translator.trans('flagrow-affiliation-links.admin.type-options.simple'),
-                        regex: app.translator.trans('flagrow-affiliation-links.admin.type-options.regex'),
+                        exact: app.translator.trans('kilowhat-affiliation-links.admin.type-options.exact'),
+                        simple: app.translator.trans('kilowhat-affiliation-links.admin.type-options.simple'),
+                        regex: app.translator.trans('kilowhat-affiliation-links.admin.type-options.regex'),
                     },
                 }),
-                m('.helpText', app.translator.trans('flagrow-affiliation-links.admin.rules.match-type-help')),
+                m('.helpText', app.translator.trans('kilowhat-affiliation-links.admin.rules.match-type-help')),
             ]),
             m('.Form-group', [
-                m('label', app.translator.trans('flagrow-affiliation-links.admin.rules.match-pattern')),
+                m('label', app.translator.trans('kilowhat-affiliation-links.admin.rules.match-pattern')),
                 m('input.FormControl', {
                     type: 'text',
                     value: this.rule.match_pattern(),
                     oninput: m.withAttr('value', this.updateAttribute.bind(this, 'match_pattern')),
                 }),
-                m('.helpText', app.translator.trans('flagrow-affiliation-links.admin.rules.match-pattern-help')),
+                m('.helpText', app.translator.trans('kilowhat-affiliation-links.admin.rules.match-pattern-help')),
             ]),
             m('.Form-group', [
-                m('label', app.translator.trans('flagrow-affiliation-links.admin.rules.replacement')),
+                m('label', app.translator.trans('kilowhat-affiliation-links.admin.rules.replacement')),
                 m('input.FormControl', {
                     type: 'text',
                     value: this.rule.replacement(),
                     oninput: m.withAttr('value', this.updateAttribute.bind(this, 'replacement')),
                 }),
-                m('.helpText', app.translator.trans('flagrow-affiliation-links.admin.rules.replacement-help')),
+                m('.helpText', app.translator.trans('kilowhat-affiliation-links.admin.rules.replacement-help')),
             ]),
             m('.Form-group', [
-                m('label', app.translator.trans('flagrow-affiliation-links.admin.rules.comment')),
+                m('label', app.translator.trans('kilowhat-affiliation-links.admin.rules.comment')),
                 m('textarea.FormControl', {
                     value: this.rule.comment(),
                     oninput: m.withAttr('value', this.updateAttribute.bind(this, 'comment')),
@@ -118,7 +122,7 @@ export default class RuleEdit extends Component {
                 Button.component({
                     type: 'submit',
                     className: 'Button Button--primary',
-                    children: app.translator.trans('flagrow-affiliation-links.admin.buttons.' + (this.rule.exists ? 'save' : 'add') + '-rule'),
+                    children: app.translator.trans('kilowhat-affiliation-links.admin.buttons.' + (this.rule.exists ? 'save' : 'add') + '-rule'),
                     loading: this.processing,
                     disabled: !this.readyToSave(),
                     onclick: this.savePolicy.bind(this),
@@ -126,7 +130,7 @@ export default class RuleEdit extends Component {
                 (this.rule.exists ? Button.component({
                     type: 'submit',
                     className: 'Button Button--danger',
-                    children: app.translator.trans('flagrow-affiliation-links.admin.buttons.delete-rule'),
+                    children: app.translator.trans('kilowhat-affiliation-links.admin.buttons.delete-rule'),
                     loading: this.processing,
                     onclick: this.deletePolicy.bind(this),
                 }) : ''),
@@ -169,7 +173,7 @@ export default class RuleEdit extends Component {
     }
 
     deletePolicy() {
-        if (!confirm(app.translator.trans('flagrow-affiliation-links.admin.messages.delete-rule-confirmation', {
+        if (!confirm(app.translator.trans('kilowhat-affiliation-links.admin.messages.delete-rule-confirmation', {
                 match_pattern: this.rule.match_pattern(),
             }).join(''))) {
             return;

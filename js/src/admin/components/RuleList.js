@@ -1,13 +1,16 @@
+import sortable from 'html5sortable/dist/html5sortable.es.js';
 import app from 'flarum/app';
 import Component from 'flarum/Component';
-import RuleEdit from 'flagrow/affiliation-links/components/RuleEdit';
-import sortByAttribute from 'flagrow/affiliation-links/helpers/sortByAttribute';
+import sortByAttribute from '../helpers/sortByAttribute';
+import RuleEdit from './RuleEdit';
+
+/* global m, $ */
 
 export default class RuleList extends Component {
     init() {
         app.request({
             method: 'GET',
-            url: app.forum.attribute('apiUrl') + '/flagrow/affiliation-links/rules',
+            url: app.forum.attribute('apiUrl') + '/kilowhat-affiliation-links/rules',
         }).then(result => {
             app.store.pushPayload(result);
 
@@ -16,23 +19,21 @@ export default class RuleList extends Component {
     }
 
     config() {
-        this.$('.js-rules-container')
-            .sortable({
-                handle: '.js-rule-handle',
-            })
-            .on('sortupdate', () => {
-                const sorting = this.$('.js-rule-data')
-                    .map(function () {
-                        return $(this).data('id');
-                    })
-                    .get();
+        sortable(this.element.querySelector('.js-rules-container'), {
+            handle: '.js-rule-handle',
+        })[0].addEventListener('sortupdate', () => {
+            const sorting = this.$('.js-rule-data')
+                .map(function () {
+                    return $(this).data('id');
+                })
+                .get();
 
-                this.updateSort(sorting);
-            });
+            this.updateSort(sorting);
+        });
     }
 
     view() {
-        const rules = app.store.all('flagrow-affiliation-links-rules');
+        const rules = app.store.all('kilowhat-affiliation-links-rules');
 
         let fieldsList = [];
 
@@ -48,8 +49,8 @@ export default class RuleList extends Component {
             });
 
         return m('div', [
-            m('h2', app.translator.trans('flagrow-affiliation-links.admin.titles.rules')),
-            m('.Flagrow-AffiliationLinks-Rules-Container', [
+            m('h2', app.translator.trans('kilowhat-affiliation-links.admin.titles.rules')),
+            m('.Kilowhat-AffiliationLinks-Rules-Container', [
                 m('.js-rules-container', fieldsList),
                 RuleEdit.component({
                     key: 'new',
@@ -62,7 +63,7 @@ export default class RuleList extends Component {
     updateSort(sorting) {
         app.request({
             method: 'POST',
-            url: app.forum.attribute('apiUrl') + '/flagrow/affiliation-links/rules/order',
+            url: app.forum.attribute('apiUrl') + '/kilowhat-affiliation-links/rules/order',
             data: {
                 sort: sorting,
             },

@@ -1,11 +1,12 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Controllers;
+namespace Kilowhat\AffiliationLinks\Controllers;
 
-use Flagrow\AffiliationLinks\Repositories\RuleRepository;
-use Flagrow\AffiliationLinks\Serializers\RuleSerializer;
 use Flarum\Api\Controller\AbstractCreateController;
-use Flarum\Core\Access\AssertPermissionTrait;
+use Flarum\User\AssertPermissionTrait;
+use Illuminate\Support\Arr;
+use Kilowhat\AffiliationLinks\Repositories\RuleRepository;
+use Kilowhat\AffiliationLinks\Serializers\RuleSerializer;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
@@ -26,7 +27,7 @@ class RuleStoreController extends AbstractCreateController
     {
         $this->assertAdmin($request->getAttribute('actor'));
 
-        $attributes = array_get($request->getParsedBody(), 'data.attributes', []);
+        $attributes = Arr::get($request->getParsedBody(), 'data.attributes', []);
 
         return $this->rules->store($attributes);
     }

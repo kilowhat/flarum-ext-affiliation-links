@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\AffiliationLinks;
+namespace Kilowhat\AffiliationLinks;
 
 use Zend\Diactoros\Uri;
 

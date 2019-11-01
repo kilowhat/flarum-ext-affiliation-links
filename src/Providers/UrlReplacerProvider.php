@@ -1,10 +1,10 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Providers;
+namespace Kilowhat\AffiliationLinks\Providers;
 
-use Flagrow\AffiliationLinks\Repositories\RuleRepository;
-use Flagrow\AffiliationLinks\UrlReplacer;
 use Flarum\Foundation\AbstractServiceProvider;
+use Kilowhat\AffiliationLinks\Repositories\RuleRepository;
+use Kilowhat\AffiliationLinks\UrlReplacer;
 
 class UrlReplacerProvider extends AbstractServiceProvider
 {

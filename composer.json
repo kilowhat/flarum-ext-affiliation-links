@@ -1,10 +1,9 @@
 {
-    "name": "flagrow/affiliation-links",
+    "name": "kilowhat/flarum-ext-affiliation-links",
     "description": "Transform posted links into affiliation links with ease",
     "keywords": [
         "extension",
         "flarum",
-        "flagrow",
         "affiliation",
         "links"
     ],
@@ -18,36 +17,38 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/flagrow/affiliation-links/issues",
-        "source": "https://github.com/flagrow/affiliation-links"
+        "source": "https://github.com/kilowhat/flarum-ext-affiliation-links"
     },
     "require": {
-        "flarum/core": "^0.1.0-beta.7"
+        "flarum/core": ">=0.1.0-beta.10 < 0.1.0-beta.11"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.0"
     },
+    "replace": {
+        "flagrow/affiliation-links": "*"
+    },
     "extra": {
         "flarum-extension": {
-            "title": "Flagrow Affiliation Links",
+            "title": "Affiliation Links",
             "icon": {
-                "name": "exchange",
+                "name": "fas fa-exchange-alt",
                 "backgroundColor": "#f4f4f4",
                 "color": "#5f4bb6"
             }
         },
         "flagrow": {
-            "discuss": "https://discuss.flarum.org/d/12391-flagrow-affiliation-links-multi-purpose-affiliation-links-generator"
+            "discuss": "https://discuss.flarum.org/d/21833"
         }
     },
     "autoload": {
         "psr-4": {
-            "Flagrow\\AffiliationLinks\\": "src/"
+            "Kilowhat\\AffiliationLinks\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Flagrow\\AffiliationLinks\\Tests\\": "tests/"
+            "Kilowhat\\AffiliationLinks\\Tests\\": "tests/"
         }
     }
 }

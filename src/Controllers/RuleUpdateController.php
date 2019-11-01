@@ -1,15 +1,16 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Controllers;
+namespace Kilowhat\AffiliationLinks\Controllers;
 
-use Flagrow\AffiliationLinks\Repositories\RuleRepository;
-use Flagrow\AffiliationLinks\Serializers\RuleSerializer;
-use Flarum\Api\Controller\AbstractResourceController;
-use Flarum\Core\Access\AssertPermissionTrait;
+use Flarum\Api\Controller\AbstractShowController;
+use Flarum\User\AssertPermissionTrait;
+use Illuminate\Support\Arr;
+use Kilowhat\AffiliationLinks\Repositories\RuleRepository;
+use Kilowhat\AffiliationLinks\Serializers\RuleSerializer;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
-class RuleUpdateController extends AbstractResourceController
+class RuleUpdateController extends AbstractShowController
 {
     use AssertPermissionTrait;
 
@@ -26,11 +27,11 @@ class RuleUpdateController extends AbstractResourceController
     {
         $this->assertAdmin($request->getAttribute('actor'));
 
-        $id = array_get($request->getQueryParams(), 'id');
+        $id = Arr::get($request->getQueryParams(), 'id');
 
         $policy = $this->rules->findOrFail($id);
 
-        $attributes = array_get($request->getParsedBody(), 'data.attributes', []);
+        $attributes = Arr::get($request->getParsedBody(), 'data.attributes', []);
 
         return $this->rules->update($policy, $attributes);
     }

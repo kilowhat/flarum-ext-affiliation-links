@@ -1,15 +1,16 @@
 <?php
 
-namespace Flagrow\AffiliationLinks\Controllers;
+namespace Kilowhat\AffiliationLinks\Controllers;
 
-use Flagrow\AffiliationLinks\Repositories\RuleRepository;
-use Flagrow\AffiliationLinks\Serializers\RuleSerializer;
-use Flarum\Api\Controller\AbstractCollectionController;
-use Flarum\Core\Access\AssertPermissionTrait;
+use Flarum\Api\Controller\AbstractListController;
+use Flarum\User\AssertPermissionTrait;
+use Illuminate\Support\Arr;
+use Kilowhat\AffiliationLinks\Repositories\RuleRepository;
+use Kilowhat\AffiliationLinks\Serializers\RuleSerializer;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
 
-class RuleOrderController extends AbstractCollectionController
+class RuleOrderController extends AbstractListController
 {
     use AssertPermissionTrait;
 
@@ -28,7 +29,7 @@ class RuleOrderController extends AbstractCollectionController
 
         $attributes = $request->getParsedBody();
 
-        $this->rules->sorting(array_get($attributes, 'sort'));
+        $this->rules->sorting(Arr::get($attributes, 'sort'));
 
         // Return updated sorting values
         return $this->rules->all();

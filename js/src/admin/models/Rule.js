@@ -13,6 +13,6 @@ export default class Rule extends mixin(Model, {
      * @inheritDoc
      */
     apiEndpoint() {
-        return '/flagrow/affiliation-links/rules' + (this.exists ? '/' + this.data.id : '');
+        return '/kilowhat-affiliation-links/rules' + (this.exists ? '/' + this.data.id : '');
     }
 }
