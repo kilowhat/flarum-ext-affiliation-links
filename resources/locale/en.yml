@@ -28,7 +28,7 @@ kilowhat-affiliation-links:
             match-pattern: Match Pattern
             match-pattern-help: >
                 The value that will be compared against the component with the method selected as type.
-                If you chose type "Regex" don't forget the expression delimiters.
+                If you choose type "Regex" don't forget the expression delimiters.
             replacement: Replacement Value
             replacement-help: >
                 The url that will take the place of the original one if it is matched.
